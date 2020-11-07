@@ -1,5 +1,10 @@
-//Get date containers
-var daysContainer = $(".container");
+//Get containers
+var scheduleContainer = $(".container");
+
+
+
+//format date with moment.js
+$("#currentDay").text(moment().format("MMMM Do YYYY"));
 
 var storedVals =["","","","","","","","",""];
 /**
@@ -17,6 +22,9 @@ if(tempData != null){
  */
 var timeStrings = ["9am","10am","11am","12pm","1pm","2pm","3pm","4pm","5pm"];
 
+var timeIndicator = moment().format("a");
+
+var hourIndex = timeStrings.indexOf(moment().format("ha"));
 
  for(var i =0 ; i<timeStrings.length;i++){
 
@@ -29,20 +37,38 @@ var timeStrings = ["9am","10am","11am","12pm","1pm","2pm","3pm","4pm","5pm"];
 
     var inputField = $("<input>");
 
-    inputField.attr("class","col-10 past");
     inputField.attr("id","input-"+(i));
     inputField.val(storedVals[i]);
 
     var submitButton = $("<button>");
 
     submitButton.attr("id","submit-"+(i));
-    submitButton.attr("class","saveBtn col-1");
+    submitButton.attr("class","col-1 saveBtn");
+
+
+    //Determine input class based on hour
+    if(hourIndex != -1){
+        if(hourIndex<i){
+            inputField.attr("class","col-10 future");
+        }else if(hourIndex === i){
+            inputField.attr("class","col-10 present");
+        }else{
+            inputField.attr("class","col-10 past");
+        }  
+    }else{
+        if(timeIndicator==="am"){
+            inputField.attr("class","col-10 future");
+        }else{
+            inputField.attr("class","col-10 past");
+        }
+    }
+    
 
     form.append(timeBox);
     form.append(inputField);
     form.append(submitButton);
 
-    daysContainer.append(form);
+    scheduleContainer.append(form);
 
  }
 
