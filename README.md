@@ -16,7 +16,7 @@ The website appears as follows.
 
 ### Start
 
-![start-screenshot](./src/img/screenCapture.JPG)
+![mainScreen](screenCapture.JPG)
 
 ## Installation
 
