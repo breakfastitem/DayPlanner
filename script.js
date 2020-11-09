@@ -4,7 +4,7 @@ var scheduleContainer = $(".container");
 
 
 //format date with moment.js
-$("#currentDay").text(moment().format("MMMM Do YYYY"));
+$("#currentDay").text(moment().format("dddd, MMMM Do"));
 
 var storedVals =["","","","","","","","",""];
 /**
@@ -76,7 +76,6 @@ var hourIndex = timeStrings.indexOf(moment().format("ha"));
   * Add event listeners
   */
  $(document).ready(function(){
-    
 
     $(".saveBtn").on("click",function(event){
         event.preventDefault();
