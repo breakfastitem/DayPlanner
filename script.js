@@ -1,8 +1,6 @@
 //Get containers
 var scheduleContainer = $(".container");
 
-
-
 //format date with moment.js
 $("#currentDay").text(moment().format("dddd, MMMM Do"));
 
@@ -44,6 +42,8 @@ var hourIndex = timeStrings.indexOf(moment().format("ha"));
 
     submitButton.attr("id","submit-"+(i));
     submitButton.attr("class","col-1 saveBtn");
+
+    submitButton.text("Save");
 
 
     //Determine input class based on hour
